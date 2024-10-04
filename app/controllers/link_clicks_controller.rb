@@ -1,6 +1,4 @@
 class LinkClicksController < ApplicationController
-  protect_from_forgery except: :create
-
   def create
     click_data = Rails.cache.fetch(LinkClick::CACHE_KEY) { [] }
     click_data << link_click_params.to_h
