@@ -1,0 +1,16 @@
+<div>
+  <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">Click Data</h2>
+  <%= form_tag admin_root_path(format: :turbo_stream), method: :get, 
+    data: {
+      turbo_frame: :dashboard_data
+    },
+    class: "px-2 py-4 flex gap-4" do %>
+    <%= date_field_tag :from, nil, class: "block bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5" %>
+    <%= date_field_tag :to, nil, class: "block bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+  <%= render "dashboard_data", 
+      summary: @summary, 
+      most_clicked_links: @most_clicked_links, 
+      total_clicked_by_day: @total_clicked_by_day %>
+</div>

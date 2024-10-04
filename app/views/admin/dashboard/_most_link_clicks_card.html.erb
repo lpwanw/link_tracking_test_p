@@ -1,0 +1,14 @@
+<div class="rounded-lg border border-gray-200 shadow-md p-6 bg-white">
+  <h1 class="text-xl font-semibold text-gray-800 mb-4">Most Clicked Links</h1>
+  <ul class="list-inside flex flex-col divide-gray-200 divide-y-2">
+    <% most_clicked_links.each do |link| %>
+      <li class="mt-2">
+        <span class="text-blue-600 hover:text-blue-800 visited:text-purple-600">
+          <%= link.url %>
+        </span>
+        <br>
+        <span class="text-sm text-gray-600">Clicks: <%= link.click_counts %></span>
+      </li>
+    <% end %>
+  </ul>
+</div>

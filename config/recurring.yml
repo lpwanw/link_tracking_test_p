@@ -1,3 +1,8 @@
+development:
+  import_click_data:
+    class: "BatchImportLinkClickJob"
+    priority: 1
+    schedule: every minute
 # production:
 #   periodic_cleanup:
 #     class: CleanSoftDeletedRecordsJob

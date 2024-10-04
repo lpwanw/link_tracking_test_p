@@ -1,0 +1,6 @@
+<%= turbo_stream.replace :dashboard_data do %>
+  <%= render "admin/dashboard/dashboard_data", 
+    summary: @summary,
+    most_clicked_links: @most_clicked_links, 
+    total_clicked_by_day: @total_clicked_by_day %>
+<% end %>

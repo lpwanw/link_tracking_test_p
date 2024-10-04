@@ -1,3 +1,56 @@
+
+# Tay LE Phuong Link Tracking Test
+
+Prepare Database
+```
+rails db:prepare
+```
+
+Run the WEB with Job inside PUMA
+```
+bin/dev
+```
+
+For admin Basic Authentication
+```
+username: admin
+password: password
+# can modifined by passing ENV: ADMIN_USERNAME, ADMIN_PASSWORD
+```
+
+## Click Tracking Feature
+
+* in the `LinkClicks#create` action
+    * write thought cache make it faster and not put presure on the main Database
+    * Then use a job run every minute to in search all the data from cache to the main Database
+    * PROS:
+        * fast to write
+        * batch insert with just 1 query
+    * CONS:
+        * it will not reflect data on the Admin Dashboard soon
+* In Javascript:
+    * use `turbo:load` event add click event listenner => the right way with rails, not use `DOMContentLoaded`, like normal html
+    * use keep_alive=true true minimize the request on client make it same with `sendBeacon()`
+    * provide `X-CSRF-Token` Header for `protect_from_forgery`
+    * use `this.getAttribute("href")` to make the different between the interal and exteral url
+
+## Dashboard
+
+* protect with Basic Authentication since do not have authentication feature
+* cache for frequently accessed statistics exprire every 5 minutes
+* `Turbo-Stream` for the search action make the page only replace the statistics content
+* should use ransack for better searh on the result
+
+## Improvement Idea
+
+* Add Some Chart for the Dashboard for more information
+* Realtime update with `ActionCable::Broadcast`
+
+
+---
+---
+---
+
 # Ruby on Rails Assignment: Implement Link Click Tracking
 
 ## Overview
