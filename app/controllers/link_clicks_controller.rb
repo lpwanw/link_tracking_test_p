@@ -11,19 +11,13 @@ class LinkClicksController < ApplicationController
 
   private
 
+  delegate :referrer, :user_agent, to: :request
+
   def link_click_params
     params.required(:link_click).permit(:url, :anchor_text).merge(ip_address:, referrer:, user_agent:)
   end
 
   def ip_address
     request.remote_ip
-  end
-
-  def referrer
-    request.referrer
-  end
-
-  def user_agent
-    request.user_agent
   end
 end

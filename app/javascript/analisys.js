@@ -12,7 +12,7 @@ function attachClickListeners() {
 function handleLinkClick(event) {
   const clickData = {
     link_click: {
-      url: this.href,
+      url: this.getAttribute("href"),
       anchor_text: this.textContent,
     }
   };
