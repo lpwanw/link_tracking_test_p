@@ -3,7 +3,7 @@ class LinkClicksController < ApplicationController
 
   def create
     @link_click = LinkClick.create(link_click_params)
-    head :ok
+    head :no_content
   end
 
   private
