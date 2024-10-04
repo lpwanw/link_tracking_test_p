@@ -65,3 +65,4 @@ group :test do
 end
 
 gem "faker"
+gem "mission_control-jobs"
